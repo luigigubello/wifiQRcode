@@ -20,14 +20,14 @@ if ssid=='':
 	print('\n    Need to be connect to Wireless Network.\n')
 	sys.exit()
 hidden = str(os.popen("egrep 'hidden=' /etc/NetworkManager/system-connections/" + ssid).read())
-if hidden.find('true'):
+if hidden.find('true') != -1:
 	hidden = 'True'
 else:
 	hidden = 'False'
 key = str(os.popen("egrep 'key-mgmt=' /etc/NetworkManager/system-connections/" + ssid).read())
-if key.find('wpa'):
+if key.find('wpa') != -1:
 	key = 'WPA'
-elif key.find('ieee8021x'):
+elif key.find('ieee8021x') != -1:
 	key = 'WEP'
 else:
 	key = 'nopass'
